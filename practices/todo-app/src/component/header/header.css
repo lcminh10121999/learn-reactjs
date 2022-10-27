@@ -1,0 +1,7 @@
+.header{
+    background-color: blue;
+}
+
+.row {
+    justify-content: space-between;
+} 
