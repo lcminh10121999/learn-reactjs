@@ -39,11 +39,7 @@ function ListCart(props) {
       description: "description 8",
     },
   ];
-  //   return listCart.map((item, index) => {
-  //     return (
-  //       <Cart key={index} title={item.title} description={item.description} />
-  //     );
-  //   });
+
   return (
     <div className="row">
       {listCart.map((item, index) => {

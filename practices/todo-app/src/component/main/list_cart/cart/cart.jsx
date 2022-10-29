@@ -7,10 +7,9 @@ Cart.propTypes = {};
 function Cart(props) {
   var [status, setStatus] = useState("new");
 
-  let changeStatus = () => {
-    var status = document.querySelector("#change_status").value;
-    console.log(status);
-    setStatus(status);
+  let changeStatus = (e) => {
+    // var status = document.querySelector("#change_status").value;
+    setStatus(e.target.value);
   };
 
   return (

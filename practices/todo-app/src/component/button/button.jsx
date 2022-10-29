@@ -5,11 +5,7 @@ Button.propTypes = {};
 
 function Button(props) {
   return (
-    <input
-      type="submit"
-      value="Button Create"
-      className="btn btn-success my-2"
-    />
+    <input type="submit" value={props.value} className="btn btn-success" />
   );
 }
 
