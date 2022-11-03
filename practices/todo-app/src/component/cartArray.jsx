@@ -1,0 +1,3 @@
+var listCart = [];
+
+export { listCart };

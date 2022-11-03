@@ -5,7 +5,7 @@ Button.propTypes = {};
 
 function Button(props) {
   return (
-    <input type="submit" value={props.value} className="btn btn-success" />
+    <input type="submit" value={props.value} className={props.className} />
   );
 }
 

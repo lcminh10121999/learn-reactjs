@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import "./header.css";
 import Search from "../search/seacrh";
 import Button from "../button/button";
+import { useNavigate } from "react-router-dom";
 
 Header.propTypes = {};
 
@@ -11,7 +12,7 @@ function Header(props) {
     <div className="container-fluid header">
       <div class="row">
         <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 my-2">
-          <Button value={"Button Create"} />
+          <Button value="Button Create" className="btn btn-success mx-2" />
         </div>
         <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
           <Search />

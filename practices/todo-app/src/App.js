@@ -3,14 +3,17 @@ import './App.css';
 import Header from './component/header/header';
 import Main from './component/main/main';
 import SideBar from './component/sidebar/side_bar';
+import Form from './component/form/Form';
+import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
 function App() {
   return (
+
+
+
     <div className="App">
 
-
       <div className="container-fluid">
-
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 px-0">
             <Header />

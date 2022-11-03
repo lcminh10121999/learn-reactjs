@@ -5,7 +5,8 @@ import { useState } from "react";
 Cart.propTypes = {};
 
 function Cart(props) {
-  var [status, setStatus] = useState("new");
+  var statusCart = props.statusCart;
+  var [status, setStatus] = useState(statusCart);
 
   let changeStatus = (e) => {
     // var status = document.querySelector("#change_status").value;
@@ -16,9 +17,9 @@ function Cart(props) {
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 mt-2">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">{props.title}</h5>
-          <p class="card-text">{props.description}</p>
-          <p>{status}</p>
+          <h5 class="card-title">Title: {props.title}</h5>
+          <p class="card-text">Description: {props.description}</p>
+          <p>Status: {status}</p>
           <select
             id="change_status"
             onChange={changeStatus}

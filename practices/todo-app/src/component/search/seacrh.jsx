@@ -8,7 +8,7 @@ function Search(props) {
   return (
     <div className="form-group my-2 d-flex">
       <input type="text" className="form-control" placeholder="Search"></input>
-      <Button value={"Search"} />
+      <Button value="Search" className="btn btn-success mx-2" />
     </div>
   );
 }
