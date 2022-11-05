@@ -21,6 +21,8 @@ function Form(props) {
     creator: "",
     status: "new",
   });
+  const [error, setError] = useState(false);
+  const [msg, setMsg] = useState("");
 
   let changeInput = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
@@ -28,13 +30,27 @@ function Form(props) {
   };
 
   let saveCart = (e) => {
-    e.preventDefault();
+    e.preventDefault(e);
+
+    if (!inputData.title || !inputData.description || !inputData.creator) {
+      setError(true);
+      setMsg("khong duoc rong");
+      return;
+    }
+
     // setCartListArray([...cartListArray, inputData]);
     const path = "/";
     cartListArray.push(inputData);
     localStorage.setItem("cartListArray", JSON.stringify(cartListArray));
     navigate(path);
   };
+
+  // let validateForm = (arr) => {
+  //   if (arr.title) {
+
+  //   }
+
+  // };
   return (
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 my-2">
       <form action="" onSubmit={saveCart}>
@@ -68,6 +84,7 @@ function Form(props) {
             onChange={changeInput}
             class="form-control"
           ></input>
+          {error && inputData.title.length <= 0 ? <p>Title {msg}</p> : ""}
         </div>
         <div class="form-group d-flex">
           <label>description</label>
@@ -77,6 +94,11 @@ function Form(props) {
             onChange={changeInput}
             class="form-control"
           ></input>
+          {error && inputData.description.length <= 0 ? (
+            <p>Description {msg}</p>
+          ) : (
+            ""
+          )}
         </div>
         <div class="form-group d-flex">
           <label>creator</label>
@@ -86,6 +108,7 @@ function Form(props) {
             onChange={changeInput}
             class="form-control"
           ></input>
+          {error && inputData.creator.length <= 0 ? <p>creator {msg}</p> : ""}
         </div>
         <div className="">
           <Button value="Save" className="btn btn-success mx-2" />
