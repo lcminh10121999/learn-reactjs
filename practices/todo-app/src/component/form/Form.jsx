@@ -5,77 +5,44 @@ import Button from "../button/button";
 import { useNavigate } from "react-router-dom";
 // import { listCart } from "../cartArray";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import productApi from "../../Api/todo";
 
 function Form(props) {
   let navigate = useNavigate();
-  //* check null listCart
-  var listCart = localStorage.getItem("cartListArray")
-    ? (listCart = JSON.parse(localStorage.getItem("cartListArray")))
-    : (listCart = []);
-  console.log(listCart);
 
-  const [cartListArray, setCartListArray] = useState(listCart);
-  const [inputData, setInputData] = useState({
+  const defaultValue = {
     title: "",
     description: "",
     creator: "",
     status: "new",
-  });
+    id: uuidv4(),
+  };
+  const [inputData, setInputData] = useState(defaultValue);
+
   const [error, setError] = useState(false);
   const [msg, setMsg] = useState("");
 
   let changeInput = (e) => {
     setInputData({ ...inputData, [e.target.name]: e.target.value });
-    console.log({ ...inputData, [e.target.name]: e.target.value });
   };
 
-  let saveCart = (e) => {
+  let saveCart = async (e) => {
     e.preventDefault(e);
+    // if (!inputData.title || !inputData.description || !inputData.creator) {
+    //   setError(true);
+    //   setMsg("khong duoc rong");
+    //   return;
+    // }
 
-    if (!inputData.title || !inputData.description || !inputData.creator) {
-      setError(true);
-      setMsg("khong duoc rong");
-      return;
-    }
-
-    // setCartListArray([...cartListArray, inputData]);
     const path = "/";
-    cartListArray.push(inputData);
-    localStorage.setItem("cartListArray", JSON.stringify(cartListArray));
-    navigate(path);
+    var a = await productApi.add(inputData);
+    // navigate(path);
   };
 
-  // let validateForm = (arr) => {
-  //   if (arr.title) {
-
-  //   }
-
-  // };
   return (
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 my-2">
       <form action="" onSubmit={saveCart}>
-        {/* <Input
-        label="Title"
-        className="form-control"
-        type="text"
-        name="title"
-        onChange={changeInput}
-      />
-      <Input
-        label="Description"
-        className="form-control"
-        type="text"
-        name="description"
-        onChange={changeInput}
-      />
-      <Input
-        label="Creator"
-        className="form-control"
-        type="text"
-        name="creator"
-        onChange={changeInput}
-      /> */}
-
         <div class="form-group d-flex">
           <label>Title</label>
           <input
